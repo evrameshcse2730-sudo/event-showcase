@@ -1,26 +1,20 @@
 import { useEffect, useState } from "react";
 import { collection, getDocs } from "firebase/firestore";
-
 import { db } from "../firebase";
-
 import "./Home.css";
 
 function Home() {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
 
-
-  /* =========================
+  /* =====================================================
      LOAD EVENTS FROM FIREBASE
-  ========================= */
+  ===================================================== */
 
   useEffect(() => {
     async function loadEvents() {
       try {
-        const snapshot = await getDocs(
-          collection(db, "events")
-        );
+        const snapshot = await getDocs(collection(db, "events"));
 
         const eventList = snapshot.docs.map((item) => ({
           id: item.id,
@@ -28,11 +22,8 @@ function Home() {
         }));
 
         setEvents(eventList);
-
-      } catch (err) {
-        console.error("Error loading events:", err);
-
-        setError("Unable to load events.");
+      } catch (error) {
+        console.error("Error loading events:", error);
       } finally {
         setLoading(false);
       }
@@ -41,959 +32,761 @@ function Home() {
     loadEvents();
   }, []);
 
+  /* =====================================================
+     FIXED EVENT TYPES
+  ===================================================== */
+
+  const eventTypes = [
+    {
+      number: "01",
+      title: "Conferences",
+      description:
+        "Professional conferences designed to connect ideas, people and opportunities.",
+      icon: "✦",
+    },
+    {
+      number: "02",
+      title: "Seminars",
+      description:
+        "Focused sessions that bring experts and audiences together around meaningful ideas.",
+      icon: "◈",
+    },
+    {
+      number: "03",
+      title: "Corporate Events",
+      description:
+        "Sophisticated corporate experiences built around your brand and business goals.",
+      icon: "◇",
+    },
+    {
+      number: "04",
+      title: "Networking Events",
+      description:
+        "Curated environments where meaningful professional connections can happen.",
+      icon: "○",
+    },
+  ];
+
+  /* =====================================================
+     WHATSAPP
+  ===================================================== */
+
+  const whatsappNumber = "919999999999";
+
+  const whatsappMessage = encodeURIComponent(
+    "Hi, I would like to know more about your event services."
+  );
+
+  const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 
   return (
-    <div className="site">
+    <div className="page">
 
-
-      {/* =====================================================
+      {/* =================================================
           NAVBAR
-      ===================================================== */}
+      ================================================= */}
 
-      <nav className="navbar">
+      <nav className="luxury-navbar">
 
-        <a href="#home" className="nav-logo">
+        <a href="#home" className="luxury-logo">
           EVENT<span>SHOW</span>
         </a>
 
-
-        <div className="nav-links">
-
-          <a href="#home">
-            Home
-          </a>
-
-          <a href="#about">
-            About
-          </a>
-
-          <a href="#services">
-            Services
-          </a>
-
-          <a href="#events">
-            Events
-          </a>
-
+        <div className="luxury-nav-links">
+          <a href="#home">Home</a>
+          <a href="#about">About</a>
+          <a href="#services">Services</a>
+          <a href="#events">Events</a>
           <a href="#contact">Contact</a>
-
         </div>
 
-
-        <a
-          href="#contact"
-          className="nav-button"
-        >
+        <a href="#contact" className="luxury-nav-button">
           Let's Talk
+          <span>↗</span>
         </a>
 
       </nav>
 
 
-
-      {/* =====================================================
+      {/* =================================================
           HERO
-      ===================================================== */}
+      ================================================= */}
 
-      <section
-        id="home"
-        className="hero"
-      >
+      <section className="hero" id="home">
 
         <div className="hero-content">
 
-          <p className="eyebrow hero-eyebrow">
-            EVENT EXPERIENCES
-          </p>
+          <div className="hero-eyebrow">
+            EVENTS • EXPERIENCES • CONNECTIONS
+          </div>
 
-
-          <h1>
-            Moments
+          <h1 className="hero-title">
+            Where Great
             <br />
-
-            <span>
-              worth
-            </span>
-
-            <br />
-
-            remembering.
+            <span className="gold-text">Events Begin.</span>
           </h1>
 
-
-          <p className="hero-text">
-            We create meaningful events,
-            unforgettable experiences and
-            moments that bring people together.
+          <p className="hero-description">
+            We create memorable event experiences that bring people,
+            ideas and opportunities together.
           </p>
-
 
           <div className="hero-actions">
 
-            <a
-              href="#events"
-              className="primary-button"
-            >
+            <a href="#events" className="primary-btn">
               Explore Events
-
-              <span>
-                ↗
-              </span>
+              <b>↗</b>
             </a>
 
-
-            <a
-              href="#about"
-              className="secondary-button"
-            >
-              Discover More
+            <a href="#contact" className="secondary-btn">
+              Plan Your Event
             </a>
 
           </div>
 
         </div>
-
 
 
         {/* HERO VISUAL */}
 
         <div className="hero-visual">
 
-          <div className="hero-circle">
+          <div className="hero-orb">
 
-            <div className="hero-circle-text">
-              CREATE
-              <br />
-              CONNECT
-              <br />
-              CELEBRATE
+            <div className="orbit orbit-one">
+              <span></span>
+            </div>
+
+            <div className="orbit orbit-two">
+              <span></span>
+            </div>
+
+            <div className="orbit orbit-three">
+              <span></span>
+            </div>
+
+            <div className="orb-core">
+              <span>EVENT</span>
+              <strong>360°</strong>
             </div>
 
           </div>
 
-
-          <div className="floating-card card-one">
-
-            <strong>
-              50+
-            </strong>
-
-            <span>
-              Events
-            </span>
-
-          </div>
-
-
-          <div className="floating-card card-two">
-
-            <strong>
-              10K+
-            </strong>
-
-            <span>
-              People
-            </span>
-
-          </div>
-
-
-          <div className="hero-small-circle">
-            ↗
-          </div>
-
-        </div>
-
-
-        <div className="scroll-indicator">
-
-          <span></span>
-
-          Scroll to explore
-
         </div>
 
       </section>
 
 
-
-      {/* =====================================================
+      {/* =================================================
           ABOUT
-      ===================================================== */}
+      ================================================= */}
 
-      <section
-        id="about"
-        className="about section"
-      >
+      <section className="about-section" id="about">
 
-        <div className="section-number">
-          01
+        <div className="section-label">
+          ABOUT US
         </div>
 
+        <div className="about-grid">
 
-        <div className="about-left">
-
-          <p className="eyebrow">
-            WHO WE ARE
-          </p>
-
-
-          <h2>
-
-            We turn
-
-            <br />
-
-            <span>
-              events
-            </span>
-
-            into
-
-            <br />
-
-            experiences.
-
-          </h2>
-
-        </div>
-
-
-        <div className="about-right">
-
-          <p className="large-text">
-
-            Every event has a story.
-            Our job is to make that
-            story unforgettable.
-
-          </p>
-
-
-          <p>
-
-            From professional gatherings and
-            corporate experiences to seminars
-            and networking events, we bring
-            together people, creativity and
-            thoughtful execution.
-
-          </p>
-
-
-          <p>
-
-            We focus on creating experiences
-            that people remember long after
-            the event ends.
-
-          </p>
-
-
-          <a
-            href="#services"
-            className="text-link"
-          >
-            Discover what we do →
-          </a>
-
-        </div>
-
-      </section>
-
-
-
-      {/* =====================================================
-          EVENT TYPES / SERVICES
-      ===================================================== */}
-
-      <section
-        id="services"
-        className="event-types section"
-      >
-
-        <div className="event-types-header">
-
-          <div>
-
-            <p className="eyebrow">
-              02 — WHAT WE DO
-            </p>
-
+          <div className="about-heading">
 
             <h2>
-
-              Events we
-
+              Creating moments
               <br />
-
-              <span>
-                create.
+              <span className="gold-text">
+                worth remembering.
               </span>
-
             </h2>
 
           </div>
 
+          <div className="about-content">
 
-          <p>
+            <p>
+              Every event has a purpose. We transform that purpose
+              into an experience that people remember.
+            </p>
 
-            From professional conferences to
-            meaningful networking experiences,
-            we create events around people,
-            purpose and connection.
+            <p>
+              From professional conferences and seminars to corporate
+              gatherings and networking experiences, we bring together
+              creativity, planning and execution.
+            </p>
 
-          </p>
+            <a href="#contact" className="text-link">
+              Discover Our Approach
+              <span>→</span>
+            </a>
+
+          </div>
 
         </div>
 
+      </section>
+
+
+      {/* =================================================
+          EVENT TYPES
+      ================================================= */}
+
+      <section className="events-section" id="services">
+
+        <div className="section-heading">
+
+          <div>
+            <div className="section-label">
+              WHAT WE DO
+            </div>
+
+            <h2>
+              Events with
+              <br />
+              <span className="gold-text">purpose.</span>
+            </h2>
+          </div>
+
+          <p>
+            Designed for businesses, professionals and communities
+            that want more than just an event.
+          </p>
+
+        </div>
 
 
         <div className="event-types-grid">
 
+          {eventTypes.map((event) => (
 
-          {/* TYPE 01 */}
+            <div
+              className="event-card"
+              key={event.number}
+            >
 
-          <div className="event-type">
+              <div className="event-card-top">
 
-            <span>
-              01
-            </span>
+                <span className="event-number">
+                  {event.number}
+                </span>
 
+                <span className="event-icon">
+                  {event.icon}
+                </span>
 
-            <h3>
-              Conferences
-            </h3>
+              </div>
 
+              <div className="event-card-content">
 
-            <p>
+                <h3>{event.title}</h3>
 
-              Professional conferences designed
-              to bring industry leaders, professionals
-              and audiences together.
+                <p>{event.description}</p>
 
-            </p>
+                <a href="#contact">
+                  Know More
+                  <span>↗</span>
+                </a>
 
+              </div>
 
-            <div className="event-arrow">
-              ↗
             </div>
 
-          </div>
-
-
-
-          {/* TYPE 02 */}
-
-          <div className="event-type">
-
-            <span>
-              02
-            </span>
-
-
-            <h3>
-              Seminars
-            </h3>
-
-
-            <p>
-
-              Engaging seminars and knowledge
-              sessions focused on learning,
-              ideas and meaningful conversations.
-
-            </p>
-
-
-            <div className="event-arrow">
-              ↗
-            </div>
-
-          </div>
-
-
-
-          {/* TYPE 03 */}
-
-          <div className="event-type">
-
-            <span>
-              03
-            </span>
-
-
-            <h3>
-              Corporate Events
-            </h3>
-
-
-            <p>
-
-              Corporate gatherings, team events
-              and professional experiences built
-              around organizational goals.
-
-            </p>
-
-
-            <div className="event-arrow">
-              ↗
-            </div>
-
-          </div>
-
-
-
-          {/* TYPE 04 */}
-
-          <div className="event-type">
-
-            <span>
-              04
-            </span>
-
-
-            <h3>
-              Networking Events
-            </h3>
-
-
-            <p>
-
-              Curated networking experiences
-              that help professionals build
-              valuable connections.
-
-            </p>
-
-
-            <div className="event-arrow">
-              ↗
-            </div>
-
-          </div>
+          ))}
 
         </div>
 
       </section>
 
 
+      {/* =================================================
+          RECENT EVENTS - FIREBASE
+      ================================================= */}
 
-      {/* =====================================================
-          EVENTS
-      ===================================================== */}
+      <section className="recent-events-section" id="events">
 
-      <section
-        id="events"
-        className="events section"
-      >
-
-        <div className="events-header">
+        <div className="section-heading">
 
           <div>
 
-            <p className="eyebrow">
-              03 — OUR WORK
-            </p>
-
+            <div className="section-label">
+              OUR EVENTS
+            </div>
 
             <h2>
-
               Recent
-
               <br />
-
-              <span>
-                Events.
+              <span className="gold-text">
+                experiences.
               </span>
-
             </h2>
 
           </div>
 
-
           <p>
-
-            A collection of events,
-            experiences and memories
-            created by our team.
-
+            Explore events and experiences added by our team.
           </p>
 
         </div>
 
 
+        {loading ? (
 
-        {/* LOADING */}
-
-        {loading && (
-
-          <div className="events-status">
-
+          <div className="events-loading">
+            <span></span>
             Loading events...
-
           </div>
 
-        )}
+        ) : events.length === 0 ? (
 
+          <div className="events-empty">
+            <div className="empty-icon">✦</div>
 
+            <h3>No events yet</h3>
 
-        {/* ERROR */}
-
-        {error && (
-
-          <div className="events-status error">
-
-            {error}
-
+            <p>
+              New experiences will appear here soon.
+            </p>
           </div>
 
-        )}
+        ) : (
 
+          <div className="recent-events-grid">
 
+            {events.map((event) => (
 
-        {/* NO EVENTS */}
+              <article
+                className="recent-event-card event-card"
+                key={event.id}
+              >
 
-        {!loading &&
-          !error &&
-          events.length === 0 && (
+                <div className="recent-event-image">
 
-            <div className="events-status">
-
-              No events available yet.
-
-            </div>
-
-          )}
-
-
-
-        {/* FIREBASE EVENTS */}
-
-        {!loading &&
-          !error &&
-          events.length > 0 && (
-
-            <div className="events-grid">
-
-              {events.map((event, index) => (
-
-                <article
-                  className={`event-card event-card-${index + 1}`}
-                  key={event.id}
-                >
-
-
-                  <div className="event-image">
+                  {event.imageUrl ? (
 
                     <img
                       src={event.imageUrl}
-                      alt={event.title}
+                      alt={event.title || "Event"}
                     />
 
+                  ) : (
 
-                    <div className="event-overlay">
-
-                      <span>
-                        View Event ↗
-                      </span>
-
+                    <div className="image-placeholder">
+                      <span>EVENT</span>
                     </div>
+
+                  )}
+
+                  <div className="image-overlay">
+                    <span>VIEW EVENT</span>
+                  </div>
+
+                </div>
+
+
+                <div className="recent-event-info">
+
+                  <div className="event-meta">
+
+                    <span>
+                      {event.date || "Upcoming"}
+                    </span>
+
+                    {event.location && (
+                      <>
+                        <i>•</i>
+                        <span>{event.location}</span>
+                      </>
+                    )}
 
                   </div>
 
+                  <h3>
+                    {event.title || "Event"}
+                  </h3>
 
-
-                  <div className="event-info">
-
-                    <div>
-
-                      <p className="event-date">
-
-                        {event.date}
-
-                      </p>
-
-
-                      <h3>
-
-                        {event.title}
-
-                      </h3>
-
-                    </div>
-
-
-                    <p className="event-location">
-
-                      {event.location}
-
+                  {event.description && (
+                    <p>
+                      {event.description}
                     </p>
+                  )}
 
-                  </div>
+                  <a href="#contact">
+                    Event Details
+                    <span>↗</span>
+                  </a>
 
+                </div>
 
-                  <p className="event-description">
+              </article>
 
-                    {event.description}
+            ))}
 
-                  </p>
+          </div>
 
-
-                </article>
-
-              ))}
-
-            </div>
-
-          )}
+        )}
 
       </section>
 
 
-
-      {/* =====================================================
+      {/* =================================================
           STATS
-      ===================================================== */}
+      ================================================= */}
 
-      <section className="stats">
+      <section className="stats-section">
 
+        <div className="stats-grid">
 
-        <div className="stat">
+          <div className="stat-item">
 
-          <strong>
-            50+
-          </strong>
-
-          <span>
-            Events Conducted
-          </span>
-
-        </div>
-
-
-        <div className="stat">
-
-          <strong>
-            10K+
-          </strong>
-
-          <span>
-            People Reached
-          </span>
-
-        </div>
-
-
-        <div className="stat">
-
-          <strong>
-            25+
-          </strong>
-
-          <span>
-            Locations
-          </span>
-
-        </div>
-
-
-        <div className="stat">
-
-          <strong>
-            100%
-          </strong>
-
-          <span>
-            Commitment
-          </span>
-
-        </div>
-
-      </section>
-
-
-
-      {/* =====================================================
-          EXPERIENCE
-      ===================================================== */}
-
-      <section
-        className="experience section"
-      >
-
-        <div className="experience-header">
-
-          <p className="eyebrow">
-            04 — THE EXPERIENCE
-          </p>
-
-
-          <h2>
-
-            More than an event.
-
-            <br />
+            <strong>50+</strong>
 
             <span>
-              It's a feeling.
+              Events
             </span>
 
-          </h2>
+          </div>
+
+
+          <div className="stat-item">
+
+            <strong>10K+</strong>
+
+            <span>
+              Attendees
+            </span>
+
+          </div>
+
+
+          <div className="stat-item">
+
+            <strong>25+</strong>
+
+            <span>
+              Brands
+            </span>
+
+          </div>
+
+
+          <div className="stat-item">
+
+            <strong>100%</strong>
+
+            <span>
+              Experience
+            </span>
+
+          </div>
 
         </div>
 
+      </section>
 
+
+      {/* =================================================
+          EXPERIENCE
+      ================================================= */}
+
+      <section className="experience-section">
 
         <div className="experience-grid">
 
-
-          <div className="experience-item">
-
-            <span>
-              01
-            </span>
-
-            <h3>
-              People
-            </h3>
-
-            <p>
-
-              Bringing the right people together
-              to create meaningful connections.
-
-            </p>
-
+          <div className="experience-number">
+            01
           </div>
 
+          <div className="experience-content">
 
+            <div className="section-label">
+              THE EXPERIENCE
+            </div>
 
-          <div className="experience-item">
-
-            <span>
-              02
-            </span>
-
-            <h3>
-              Creativity
-            </h3>
-
-            <p>
-
-              Fresh ideas and thoughtful details
-              that make every event unique.
-
-            </p>
-
-          </div>
-
-
-
-          <div className="experience-item">
-
-            <span>
-              03
-            </span>
-
-            <h3>
-              Execution
-            </h3>
+            <h2>
+              From first idea
+              <br />
+              to final applause.
+            </h2>
 
             <p>
-
-              Seamless planning and execution
-              from beginning to end.
-
+              We believe successful events are created long before
+              the audience arrives. Planning, creativity, coordination
+              and execution come together to create a seamless experience.
             </p>
 
-          </div>
+            <div className="experience-points">
 
+              <div>
+                <span>01</span>
+                <strong>Planning</strong>
+              </div>
 
+              <div>
+                <span>02</span>
+                <strong>Creative Direction</strong>
+              </div>
 
-          <div className="experience-item">
-
-            <span>
-              04
-            </span>
-
-            <h3>
-              Memories
-            </h3>
-
-            <p>
-
-              Creating moments people remember
-              long after the event ends.
-
-            </p>
-
-          </div>
-
-        </div>
-
-      </section>
-
-
-
-      {/* =====================================================
-          MARQUEE
-      ===================================================== */}
-
-      <section className="marquee">
-
-        <div className="marquee-track">
-
-          <span>
-            CREATE
-          </span>
-
-          <span>
-            CONNECT
-          </span>
-
-          <span>
-            CELEBRATE
-          </span>
-
-          <span>
-            CREATE
-          </span>
-
-          <span>
-            CONNECT
-          </span>
-
-          <span>
-            CELEBRATE
-          </span>
-
-        </div>
-
-      </section>
-
-
-
-      {/* =====================================================
-          CTA
-      ===================================================== */}
-<section id="contact" className="contact section">
-  <div className="section-number">05</div>
-
-  <div className="contact-content">
-
-    <div className="contact-left">
-      <p className="eyebrow">05 — CONTACT</p>
-
-      <h2>
-        Let's create
-        <br />
-        something <span>memorable.</span>
-      </h2>
-
-      <p className="contact-text">
-        Have an event in mind?
-        Let's talk about your idea and
-        create an experience people remember.
-      </p>
-    </div>
-
-    <div className="contact-right">
-
-    <a
-  href="https://wa.me/919876543210?text=Hi%2C%20I%20would%20like%20to%20know%20more%20about%20your%20event%20services."
-  target="_blank"
-  rel="noopener noreferrer"
-  className="whatsapp-button"
->
-  <span>WhatsApp Us</span>
-  <b>↗</b>
-</a>
-
-      <div className="contact-item">
-        <span>Email</span>
-        <strong>hello@example.com</strong>
-      </div>
-
-      <div className="contact-item">
-        <span>Location</span>
-        <strong>Hyderabad, India</strong>
-      </div>
-
-    </div>
-
-  </div>
-</section>
-
-
-
-      {/* =====================================================
-          FOOTER
-      ===================================================== */}
-
-      <footer
-        id="contact"
-        className="footer"
-      >
-
-        <div className="footer-top">
-
-
-          <div>
-
-            <div className="footer-logo">
-
-              EVENT<span>SHOW</span>
+              <div>
+                <span>03</span>
+                <strong>Event Execution</strong>
+              </div>
 
             </div>
 
+          </div>
+
+        </div>
+
+      </section>
+
+
+      {/* =================================================
+          MARQUEE
+      ================================================= */}
+
+      <section className="marquee-section">
+
+        <div className="marquee-track">
+
+          <span>CONFERENCES</span>
+          <i>✦</i>
+
+          <span>SEMINARS</span>
+          <i>✦</i>
+
+          <span>CORPORATE EVENTS</span>
+          <i>✦</i>
+
+          <span>NETWORKING</span>
+          <i>✦</i>
+
+          <span>CONFERENCES</span>
+          <i>✦</i>
+
+          <span>SEMINARS</span>
+          <i>✦</i>
+
+          <span>CORPORATE EVENTS</span>
+          <i>✦</i>
+
+          <span>NETWORKING</span>
+          <i>✦</i>
+
+        </div>
+
+      </section>
+
+
+      {/* =================================================
+          CTA
+      ================================================= */}
+
+      <section className="cta-section">
+
+        <div className="cta-inner">
+
+          <div className="section-label">
+            LET'S CREATE
+          </div>
+
+          <h2>
+            Your next event
+            <br />
+            <span className="gold-text">
+              starts here.
+            </span>
+          </h2>
+
+          <p>
+            Tell us what you are planning.
+            Let's turn it into an experience.
+          </p>
+
+          <div className="cta-actions">
+
+            <a
+              href={whatsappLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="whatsapp-button"
+            >
+              <span>WhatsApp Us</span>
+              <b>↗</b>
+            </a>
+
+            <a
+              href="#contact"
+              className="secondary-btn"
+            >
+              Contact Us
+            </a>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      {/* =================================================
+          CONTACT
+      ================================================= */}
+
+      <section className="contact-section" id="contact">
+
+        <div className="contact-grid">
+
+          <div className="contact-info">
+
+            <div className="section-label">
+              GET IN TOUCH
+            </div>
+
+            <h2>
+              Let's talk about
+              <br />
+              <span className="gold-text">
+                your event.
+              </span>
+            </h2>
 
             <p>
-              Creating memorable experiences.
+              Have an event in mind?
+              Reach out and let's start planning.
             </p>
 
-          </div>
 
+            <div className="contact-details">
 
+              <div>
+                <span>EMAIL</span>
+                <a href="mailto:hello@example.com">
+                  hello@example.com
+                </a>
+              </div>
 
-          <div className="footer-links">
+              <div>
+                <span>PHONE</span>
+                <a href="tel:+919999999999">
+                  +91 99999 99999
+                </a>
+              </div>
 
-            <a href="#home">
-              Home
-            </a>
+              <div>
+                <span>LOCATION</span>
+                <p>Hyderabad, India</p>
+              </div>
 
-            <a href="#about">
-              About
-            </a>
-
-            <a href="#services">
-              Services
-            </a>
-
-            <a href="#events">
-              Events
-            </a>
-
-            <a href="#contact">
-              Contact
-            </a>
+            </div>
 
           </div>
+
+
+          <div className="contact-form-wrapper">
+
+            <form
+              className="contact-form"
+              onSubmit={(e) => e.preventDefault()}
+            >
+
+              <div className="form-group">
+
+                <label>Your Name</label>
+
+                <input
+                  type="text"
+                  placeholder="Enter your name"
+                />
+
+              </div>
+
+
+              <div className="form-group">
+
+                <label>Email Address</label>
+
+                <input
+                  type="email"
+                  placeholder="Enter your email"
+                />
+
+              </div>
+
+
+              <div className="form-group">
+
+                <label>Phone Number</label>
+
+                <input
+                  type="tel"
+                  placeholder="Enter your phone number"
+                />
+
+              </div>
+
+
+              <div className="form-group">
+
+                <label>Tell us about your event</label>
+
+                <textarea
+                  rows="5"
+                  placeholder="What are you planning?"
+                ></textarea>
+
+              </div>
+
+
+              <button type="submit" className="primary-btn">
+
+                Send Enquiry
+
+                <b>↗</b>
+
+              </button>
+
+            </form>
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      {/* =================================================
+          FOOTER
+      ================================================= */}
+
+      <footer className="footer">
+
+        <div className="footer-top">
+
+          <a href="#home" className="luxury-logo">
+            EVENT<span>SHOW</span>
+          </a>
+
+          <p>
+            Creating experiences.
+            Connecting people.
+          </p>
+
+          <a href="#home" className="back-top">
+            Back to top ↑
+          </a>
 
         </div>
 
 
         <div className="footer-bottom">
 
-          <p>
-            © 2026 EventShow. All rights reserved.
-          </p>
+          <span>
+            © {new Date().getFullYear()} EventShow.
+            All rights reserved.
+          </span>
 
-
-          <a href="#home">
-            Back to top ↑
-          </a>
+          <span>
+            Hyderabad, India
+          </span>
 
         </div>
 
