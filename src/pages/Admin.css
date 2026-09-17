@@ -1,0 +1,502 @@
+/* =========================
+   ADMIN PAGE
+========================= */
+
+.admin-page {
+  min-height: 100vh;
+  background: #f5f5f5;
+  color: #111;
+}
+
+
+/* =========================
+   LOGIN
+========================= */
+
+.admin-login {
+  min-height: 100vh;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #f5f5f5;
+
+  padding: 20px;
+}
+
+.login-box {
+  width: 100%;
+  max-width: 420px;
+
+  background: #fff;
+
+  padding: 40px;
+
+  border: 1px solid #e5e5e5;
+  border-radius: 18px;
+
+  box-shadow:
+    0 20px 60px rgba(0, 0, 0, 0.06);
+}
+
+.login-label {
+  font-size: 11px;
+  letter-spacing: 3px;
+  font-weight: 700;
+
+  margin-bottom: 15px;
+}
+
+.login-box h1 {
+  font-size: 38px;
+
+  margin-bottom: 10px;
+}
+
+.login-description {
+  color: #777;
+
+  margin-bottom: 30px;
+}
+
+.login-box form {
+  display: flex;
+  flex-direction: column;
+
+  gap: 14px;
+}
+
+.login-box input {
+  width: 100%;
+
+  padding: 14px;
+
+  border: 1px solid #ddd;
+  border-radius: 8px;
+
+  outline: none;
+
+  font-size: 14px;
+}
+
+.login-box input:focus {
+  border-color: #111;
+}
+
+.login-box button {
+  padding: 14px;
+
+  border: none;
+  border-radius: 8px;
+
+  background: #111;
+  color: #fff;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.login-error {
+  color: #d00000;
+
+  font-size: 13px;
+}
+
+.back-home {
+  display: block;
+
+  margin-top: 25px;
+
+  text-align: center;
+
+  color: #666;
+
+  font-size: 14px;
+}
+
+
+/* =========================
+   HEADER
+========================= */
+
+.admin-header {
+  width: 100%;
+
+  min-height: 72px;
+
+  padding: 16px 40px;
+
+  background: #fff;
+
+  border-bottom: 1px solid #e5e5e5;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+}
+
+.admin-label {
+  margin: 0 0 5px;
+
+  font-size: 11px;
+
+  letter-spacing: 2px;
+
+  font-weight: 700;
+
+  color: #777;
+}
+
+.admin-header h1 {
+  margin: 0;
+
+  font-size: 24px;
+}
+
+.admin-actions {
+  display: flex;
+
+  align-items: center;
+
+  gap: 10px;
+}
+
+.admin-actions a,
+.admin-actions button {
+  padding: 10px 16px;
+
+  border-radius: 8px;
+
+  font-size: 14px;
+
+  cursor: pointer;
+}
+
+.admin-actions a {
+  background: #eee;
+
+  color: #111;
+}
+
+.admin-actions button {
+  border: none;
+
+  background: #111;
+
+  color: #fff;
+}
+
+
+/* =========================
+   DASHBOARD
+========================= */
+
+.admin-dashboard {
+  max-width: 1100px;
+
+  margin: auto;
+
+  padding: 40px 24px;
+}
+
+
+/* =========================
+   WELCOME
+========================= */
+
+.welcome-card {
+  background: #fff;
+
+  border: 1px solid #e5e5e5;
+
+  border-radius: 16px;
+
+  padding: 30px;
+
+  margin-bottom: 25px;
+}
+
+.welcome-card h2 {
+  margin-bottom: 10px;
+}
+
+.welcome-card p {
+  margin-bottom: 6px;
+
+  color: #777;
+}
+
+
+/* =========================
+   EVENT MANAGEMENT GRID
+========================= */
+
+.event-manager-grid {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr;
+
+  gap: 25px;
+}
+
+.dashboard-card {
+  background: #fff;
+
+  border: 1px solid #e5e5e5;
+
+  border-radius: 16px;
+
+  padding: 30px;
+}
+
+.dashboard-card h2 {
+  margin: 0 0 25px;
+
+  font-size: 22px;
+}
+
+
+/* =========================
+   EVENT FORM
+========================= */
+
+.event-form {
+  display: flex;
+
+  flex-direction: column;
+
+  gap: 14px;
+}
+
+.event-form input,
+.event-form textarea {
+  width: 100%;
+
+  padding: 14px 15px;
+
+  border: 1px solid #ddd;
+
+  border-radius: 8px;
+
+  outline: none;
+
+  font-size: 14px;
+}
+
+.event-form input:focus,
+.event-form textarea:focus {
+  border-color: #111;
+}
+
+.event-form textarea {
+  min-height: 120px;
+
+  resize: vertical;
+}
+
+.event-form button {
+  width: 100%;
+
+  padding: 14px;
+
+  border: none;
+
+  border-radius: 8px;
+
+  background: #111;
+
+  color: #fff;
+
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+.event-form button:hover {
+  background: #333;
+}
+
+.event-form button:disabled {
+  opacity: 0.6;
+
+  cursor: not-allowed;
+}
+
+
+/* =========================
+   MESSAGE
+========================= */
+
+.admin-message {
+  margin-top: 15px;
+
+  font-size: 14px;
+
+  color: #333;
+}
+
+
+/* =========================
+   EVENTS TITLE
+========================= */
+
+.events-title {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+}
+
+.events-title h2 {
+  margin-bottom: 0;
+}
+
+.events-title span {
+  width: 30px;
+  height: 30px;
+
+  display: flex;
+
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #eee;
+
+  font-size: 13px;
+}
+
+
+/* =========================
+   EVENT LIST
+========================= */
+
+.admin-event-list {
+  margin-top: 20px;
+}
+
+.admin-event {
+  padding: 18px 0;
+
+  border-bottom: 1px solid #eee;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  gap: 20px;
+}
+
+.admin-event:first-child {
+  padding-top: 0;
+}
+
+.admin-event h3 {
+  margin: 0 0 6px;
+
+  font-size: 16px;
+}
+
+.admin-event p {
+  margin: 3px 0;
+
+  color: #777;
+
+  font-size: 13px;
+}
+
+
+/* DELETE */
+
+.admin-event button {
+  padding: 8px 14px;
+
+  border: 1px solid #ddd;
+
+  border-radius: 7px;
+
+  background: #fff;
+
+  color: #111;
+
+  cursor: pointer;
+}
+
+.admin-event button:hover {
+  background: #111;
+
+  color: #fff;
+}
+
+
+/* EMPTY */
+
+.empty-events {
+  color: #777;
+
+  font-size: 14px;
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+  .admin-header {
+    padding: 16px 20px;
+
+    align-items: flex-start;
+  }
+
+  .admin-actions {
+    flex-direction: column;
+  }
+
+  .event-manager-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-dashboard {
+    padding: 30px 18px;
+  }
+
+}
+
+
+@media (max-width: 500px) {
+
+  .admin-header {
+    flex-direction: column;
+
+    gap: 15px;
+  }
+
+  .admin-actions {
+    width: 100%;
+
+    flex-direction: row;
+  }
+
+  .admin-actions a,
+  .admin-actions button {
+    flex: 1;
+
+    text-align: center;
+  }
+
+  .dashboard-card,
+  .welcome-card {
+    padding: 22px;
+  }
+
+}
